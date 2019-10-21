@@ -22,7 +22,6 @@ class UserConfig {
    </ label="Enable game genre icon", help="Show game genre icon", options="Yes,No", order=15 /> enable_genre="No";   
    </ label="Enable text frame", help="Show text frame", options="Yes,No", order=16 /> enable_frame="No";
 </ label="--------    Miscellaneous    --------", help="Miscellaneous options", order=23 /> uct6="select below";
-   </ label="Enable random text colors", help=" Select random text colors.", options="Yes,No", order=17 /> enable_colors="Yes";
    </ label="Enable monitor static effect", help="Show static effect when snap is null", options="Yes,No", order=24 /> enable_static="No";
    </ label="Random Wheel Sounds", help="Play random sounds when navigating games wheel", options="Yes,No", order=25 /> enable_random_sound="Yes";   
 //</ label="--------   Pointer images    --------", help="Change pointer image", order=30 /> uct4="select below";
@@ -373,10 +372,10 @@ frame.alpha = 255;
 }
 
 //Year text info
-//local texty = fe.add_text("[Year]", flx*0.45, fly*0.755, flw*0.5, flh*0.035 );
-//texty.set_rgb( 255, 255, 255 );
-//texty.style = Style.Bold;
-//texty.align = Align.Left;
+//local textyp = fe.add_text("[Year]", flx*0.45, fly*0.755, flw*0.5, flh*0.035 );
+//textyp.set_rgb( 255, 255, 255 );
+//textyp.style = Style.Bold;
+//textyp.align = Align.Left;
 
 //Title text info
 local textt = fe.add_text( "[Title]", flx*0.41, fly*0.835, flw*0.5, flh*0.035  );
@@ -484,34 +483,5 @@ class GenreImage1
 GenreImage1(glogo1);
 }
 
-// random number for the RGB levels
-if ( my_config["enable_colors"] == "Yes" )
-{
-function brightrand() {
- return 255-(rand()/255);
-}
 
-local red = brightrand();
-local green = brightrand();
-local blue = brightrand();
-
-// Color Transitions
-fe.add_transition_callback( "color_transitions" );
-function color_transitions( ttype, var, ttime ) {
- switch ( ttype )
- {
-  case Transition.StartLayout:
-  case Transition.ToNewSelection:
-  red = brightrand();
-  green = brightrand();
-  blue = brightrand();
-  //listbox.set_rgb(red,green,blue);
-  texty.set_rgb (red,green,blue);
-  textt.set_rgb (red,green,blue);
-  textemu.set_rgb (red,green,blue);
-  break;
- }
- return false;
- }
-}
 }
