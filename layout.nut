@@ -132,7 +132,7 @@ if ( my_config["backgroundimage"] == "XMen" )
 
 if ( my_config["backgroundimage"] == "random" )
 {
-	local random_num = floor(((rand() % 1000 ) / 1000.0) * (176 - (1 - 1)) + 1);
+	local random_num = floor(((rand() % 1000 ) / 1000.0) * (175 - (1 - 1)) + 1);
 	local background_name = "backgrounds_random/DS"+random_num+".png";		
 	local background = fe.add_image( background_name, 0, 0, flw, flh );
 }
