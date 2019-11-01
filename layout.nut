@@ -5,7 +5,7 @@
 
 class UserConfig {
 </ label="--------  Main theme layout  --------", help="Show or hide additional images", order=1 /> uct1="select below";
-   </ label="Background image", help="Background image", options="AlexKidd,Batman,Bomberman,Castlevania,CrashBandicoot,DigDug,DonkeyKong,FatalFury,Frogger,IndianaJones,IronMan,Mario,MortalKombat,PacMan,Ryu,Sonic,SpaceInvaders,StreetFighter,TMNT,XMen", order=2 /> backgroundimage="Mario";   
+   </ label="Background image", help="Background image", options="AlexKidd,Batman,Bomberman,Castlevania,CrashBandicoot,DigDug,DonkeyKong,FatalFury,Frogger,IndianaJones,IronMan,Mario,MortalKombat,PacMan,Ryu,Sonic,SpaceInvaders,StreetFighter,TMNT,XMen,random", order=2 /> backgroundimage="random";   
    </ label="Enable wheel fade", help="Enable Wheel or disable wheel fade", options="Yes,No", order=3 /> enable_wheelfade="Yes";   
    </ label="Preserve Video Aspect Ratio", help="Preserve Video Aspect Ratio", options="Yes,No", order=4 /> Preserve_Aspect_Ratio="Yes";   
    </ label="Select wheel layout", help="Select wheel type or listbox", options="vert_wheel_left", order=6 /> enable_list_type="vert_wheel_left";
@@ -128,6 +128,13 @@ if ( my_config["backgroundimage"] == "TMNT" )
 if ( my_config["backgroundimage"] == "XMen" )
 {
  local background = fe.add_image("backgrounds/XMen.png", 0, 0, flw, flh )
+}
+
+if ( my_config["backgroundimage"] == "random" )
+{
+	local random_num = floor(((rand() % 1000 ) / 1000.0) * (176 - (1 - 1)) + 1);
+	local background_name = "backgrounds_random/DS"+random_num+".png";		
+	local background = fe.add_image( background_name, 0, 0, flw, flh );
 }
 
 local blackvideo = fe.add_image("black.png", 0, 0, flw, flh );
